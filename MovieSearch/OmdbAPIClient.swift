@@ -13,7 +13,7 @@ class OmbdAPIClient {
 
 
   class func getSearchResults(withTitle title: String, completion: @escaping ([[String:Any]]) -> ()) {
-    let urlString = "\(baseURL)s=\(title)"
+    let urlString = "\(baseURL)\(title)"
     let url = URL(string: urlString)
     let session = URLSession.shared
 

@@ -21,6 +21,7 @@
 		AA8A06C71E73378400374D57 /* OmdbAPIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA8A06C61E73378400374D57 /* OmdbAPIClient.swift */; };
 		AA8A06C91E7337A400374D57 /* MovieDataStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA8A06C81E7337A400374D57 /* MovieDataStore.swift */; };
 		AA8A06CB1E733E1C00374D57 /* Movie.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA8A06CA1E733E1C00374D57 /* Movie.swift */; };
+		AA8A06CF1E7368C100374D57 /* Secrets.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA8A06CE1E7368C000374D57 /* Secrets.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -40,6 +41,7 @@
 		AA8A06C61E73378400374D57 /* OmdbAPIClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OmdbAPIClient.swift; sourceTree = "<group>"; };
 		AA8A06C81E7337A400374D57 /* MovieDataStore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MovieDataStore.swift; path = ../MovieDataStore.swift; sourceTree = "<group>"; };
 		AA8A06CA1E733E1C00374D57 /* Movie.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Movie.swift; sourceTree = "<group>"; };
+		AA8A06CE1E7368C000374D57 /* Secrets.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Secrets.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -102,6 +104,7 @@
 				AA8A06CA1E733E1C00374D57 /* Movie.swift */,
 				AA8A06C61E73378400374D57 /* OmdbAPIClient.swift */,
 				AA8A06C81E7337A400374D57 /* MovieDataStore.swift */,
+				AA8A06CE1E7368C000374D57 /* Secrets.swift */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -189,6 +192,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				AA8A06BD1E73361C00374D57 /* FavVC.swift in Sources */,
+				AA8A06CF1E7368C100374D57 /* Secrets.swift in Sources */,
 				AA8A06C71E73378400374D57 /* OmdbAPIClient.swift in Sources */,
 				AA8A06C91E7337A400374D57 /* MovieDataStore.swift in Sources */,
 				AA8A06C11E73366000374D57 /* PlotVC.swift in Sources */,

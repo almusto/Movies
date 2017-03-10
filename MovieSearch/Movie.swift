@@ -8,7 +8,6 @@
 
 import Foundation
 
-let baseURL = "http://www.omdbapi.com/?"
 
 class Movie {
   let imdbID: String
