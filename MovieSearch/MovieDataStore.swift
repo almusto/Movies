@@ -21,8 +21,11 @@ class MovieDataStore {
     OmbdAPIClient.getSearchResults(withTitle: title) { (movieArray) in
       self.movies.removeAll()
       for dict in movieArray {
-        let movie = Movie(movies: dict)
-        self.movies.append(movie)
+        if dict["Type"] as! String == "movie" {
+          let movie = Movie(movies: dict)
+          self.movies.append(movie)
+        }
+
       }
     }
   }
