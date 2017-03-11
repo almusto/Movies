@@ -10,5 +10,6 @@ import UIKit
 
 class MovieSearchCell: UICollectionViewCell {
   @IBOutlet weak var imageView: UIImageView!
-    
+
+
 }

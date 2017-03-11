@@ -25,7 +25,6 @@ class MovieDataStore {
           let movie = Movie(movies: dict)
           self.movies.append(movie)
         }
-
       }
     }
   }
