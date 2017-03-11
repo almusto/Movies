@@ -21,9 +21,9 @@ class HomeVC: UIViewController, UISearchBarDelegate, UICollectionViewDelegate, U
   let search = UISearchBar()
   var movies: [Movie] = []
 
+
     override func viewDidLoad() {
         super.viewDidLoad()
-
 
       let imageView = UIImageView(image: UIImage(named: "toy"))
       let blurEffect = UIBlurEffect(style: UIBlurEffectStyle.dark)
@@ -34,19 +34,12 @@ class HomeVC: UIViewController, UISearchBarDelegate, UICollectionViewDelegate, U
 
       search.placeholder = "Enter Search Here!"
       search.delegate = self
-
-      self.navigationItem.titleView = search
+      navigationItem.titleView = search
 
       collectionView.delegate = self
       collectionView.dataSource = self
       collectionView.backgroundView = imageView
-      let layout = UICollectionViewFlowLayout()
-      let width = UIScreen.main.bounds.width
-      layout.sectionInset = UIEdgeInsets(top: 5, left: 5, bottom: 5, right: 5)
-      layout.itemSize = CGSize(width: width / 2, height: width / 2)
-      layout.minimumInteritemSpacing = 10
-      layout.minimumLineSpacing = 10
-      collectionView.collectionViewLayout = layout
+
 
   }
 
@@ -70,6 +63,7 @@ class HomeVC: UIViewController, UISearchBarDelegate, UICollectionViewDelegate, U
         cell.imageView.image = image
       }
     }
+
 
     return cell
     
