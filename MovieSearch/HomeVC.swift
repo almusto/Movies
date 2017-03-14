@@ -25,6 +25,9 @@ class HomeVC: UIViewController, UISearchBarDelegate, UICollectionViewDelegate, U
     override func viewDidLoad() {
         super.viewDidLoad()
 
+      self.navigationController?.navigationBar.barTintColor = UIColor.gray
+      self.tabBarController?.tabBar.barTintColor = UIColor.gray
+
       let imageView = UIImageView(image: UIImage(named: "toy"))
       let blurEffect = UIBlurEffect(style: UIBlurEffectStyle.dark)
       let blurEffectView = UIVisualEffectView(effect: blurEffect)
@@ -57,16 +60,21 @@ class HomeVC: UIViewController, UISearchBarDelegate, UICollectionViewDelegate, U
 
   func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
     let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "movieCell", for: indexPath) as! MovieSearchCell
-    let movieImageURL = movies[indexPath.row].posterURL
-    if let posterURL = movieImageURL {
-      store.downloadImage(withURL: posterURL) { (image) in
-        cell.imageView.image = image
+    cell.movie = movies[indexPath.row]
+    return cell
+  }
+
+
+
+  override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+    
+    if segue.identifier == "getToDetail" {
+      let dest = segue.destination as! MovieDetailVC
+      if let indexPath = self.collectionView.indexPathsForSelectedItems {
+        let movie = movies[indexPath[0].row]
+        dest.movie = movie
       }
     }
-
-
-    return cell
-    
   }
 
   //MARK: CollectionViewFlowLayout
@@ -104,11 +112,9 @@ class HomeVC: UIViewController, UISearchBarDelegate, UICollectionViewDelegate, U
   func getMovies(withTitle title: String) {
 
     store.getMovies(withTitle: title) {
-      self.collectionView.reloadData()
-
+        self.movies = self.store.movies
+        self.collectionView.reloadData()
     }
   }
-
-
 
 }
