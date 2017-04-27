@@ -10,44 +10,41 @@ import Foundation
 
 
 class Movie {
-  let title: String
-  let imdbID: String
-  let posterURL: URL?
-  let type: String
+    let title: String
+    let imdbID: String
+    let posterURL: URL?
+    let type: String
 
-  init(movies: [String:Any]) {
-    imdbID = movies["imdbID"] as? String ?? ""
-    type = movies["Type"] as? String ?? ""
-    title = movies["Title"] as? String ?? ""
-    let poster = movies["Poster"] as? String ?? ""
-    posterURL = URL(string: poster)
-  }
+    init(movies: [String:Any]) {
+        imdbID = movies["imdbID"] as? String ?? ""
+        type = movies["Type"] as? String ?? ""
+        title = movies["Title"] as? String ?? ""
+        let poster = movies["Poster"] as? String ?? ""
+        posterURL = URL(string: poster)
+    }
 
 }
 
 class MovieDetail {
-  let shortPlot: String
-  let longPlot: String?
-  let yearReleased: String
-  let director: String
-  let writer: String
-  let actors: String
-  let metaScore: String
-  let imdbScore: String
-  let posterURL: String
+    let shortPlot: String
+    let longPlot: String?
+    let yearReleased: String
+    let director: String
+    let writer: String
+    let actors: String
+    let metaScore: String
+    let imdbScore: String
+    let posterURL: String
 
-  init(details: [String:String]) {
-    shortPlot = details["Plot"] ?? ""
-    yearReleased = details["Year"] ?? ""
-    director = details["Director"] ?? ""
-    writer = details["Writer"] ?? ""
-    actors = details["Actors"] ?? ""
-    metaScore = details["Metascore"] ?? ""
-    imdbScore = details["imdbRating"] ?? ""
-    longPlot = nil
-    posterURL = details["Poster"] ?? ""
-  }
-
-
-
+    init(details: [String:Any]) {
+        shortPlot = details["Plot"] as? String ?? ""
+        yearReleased = details["Year"] as? String ?? ""
+        director = details["Director"] as? String ?? ""
+        writer = details["Writer"] as? String ?? ""
+        actors = details["Actors"] as? String ?? ""
+        metaScore = details["Metascore"] as? String ?? ""
+        imdbScore = details["imdbRating"] as? String ?? ""
+        longPlot = nil
+        posterURL = details["Poster"] as? String ?? ""
+    }
 }

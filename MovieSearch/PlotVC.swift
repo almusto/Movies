@@ -10,21 +10,14 @@ import UIKit
 
 class PlotVC: UIViewController {
 
-  @IBOutlet weak var textView: UITextView!
-  var movieDetail: MovieDetail!
+    @IBOutlet weak var textView: UITextView!
+    var movieDetail: MovieDetail!
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
-      self.navigationController?.navigationBar.barTintColor = UIColor.gray
-      self.tabBarController?.tabBar.barTintColor = UIColor.gray
-      textView.text = movieDetail.shortPlot
-
-
+          self.navigationController?.navigationBar.barTintColor = UIColor.gray
+          self.tabBarController?.tabBar.barTintColor = UIColor.gray
+          textView.text = movieDetail.shortPlot
     }
-
-
-
-
 
 }

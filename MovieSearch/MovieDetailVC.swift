@@ -52,57 +52,39 @@ class MovieDetailVC: UIViewController {
 
 
       store.getMovieDetail(withID: imdbID) {
-
-        self.movieDetail = self.store.movieDetail
-        self.textView.text = self.movieDetail.shortPlot
-        self.releasedLabel.text = "RELEASED: \(self.movieDetail.yearReleased)"
-        self.directorLabel.text = "DIRECTOR: \(self.movieDetail.director)"
-        self.writerLabel.text = "WRITER: \(self.movieDetail.writer)"
-        self.starsLabel.text = "STARS: \(self.movieDetail.actors)"
-        self.imdbScoreLabel.text = "IMDB Score: \(self.movieDetail.imdbScore)"
-        self.metascoreLabel.text = "Metascore: \(self.movieDetail.metaScore)"
-
+        DispatchQueue.main.async {
+            self.movieDetail = self.store.movieDetail
+            self.textView.text = self.movieDetail.shortPlot
+            self.releasedLabel.text = "RELEASED: \(self.movieDetail.yearReleased)"
+            self.directorLabel.text = "DIRECTOR: \(self.movieDetail.director)"
+            self.writerLabel.text = "WRITER: \(self.movieDetail.writer)"
+            self.starsLabel.text = "STARS: \(self.movieDetail.actors)"
+            self.imdbScoreLabel.text = "IMDB Score: \(self.movieDetail.imdbScore)"
+            self.metascoreLabel.text = "Metascore: \(self.movieDetail.metaScore)"
+        }
       }
-
-
 
       if let posterURL = posterURL {
-        store.downloadImage(withURL: posterURL) { (image) in
-          DispatchQueue.main.async {
-            self.imageView.image = image
-            self.blurrImage = image
-            let blurView = UIImageView(image: self.blurrImage)
-            blurView.contentMode = .scaleToFill
-            blurView.frame = self.viewForImage.bounds
-
-            let blurEffect = UIBlurEffect(style: UIBlurEffectStyle.dark)
-
-            let blurEffectView = UIVisualEffectView(effect: blurEffect)
-            blurEffectView.frame = self.viewForImage.bounds
-
-            blurEffectView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
-            blurView.addSubview(blurEffectView)
-
-
-            self.viewForImage.insertSubview(blurView, belowSubview: self.imageView)
-          }
-        }
+            store.downloadImage(withURL: posterURL) { (image) in
+                DispatchQueue.main.async {
+                    self.imageView.addBlurr(toView: self.viewForImage, withImage: image)
+                }
+            }
 
       }
 
   }
 
-  override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-    if segue.identifier == "goToPlot" {
-      let dest = segue.destination as! PlotVC
-      dest.movieDetail = movieDetail
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "goToPlot" {
+            let dest = segue.destination as! PlotVC
+            dest.movieDetail = movieDetail
+        }
     }
-  }
 
-  @IBAction func onFav(_ sender: UIBarButtonItem) {
-    coreData.storeNote(withTitle: movie.title, imdbID: movie.imdbID, posterURL: movieDetail.posterURL)
+    @IBAction func onFav(_ sender: UIBarButtonItem) {
+        coreData.storeNote(withTitle: movie.title, imdbID: movie.imdbID, posterURL: movieDetail.posterURL)
 
-  }
-
+    }
 
 }
